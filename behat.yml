@@ -1,0 +1,26 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      #goutte: ~
+      selenium2: ~
+      browser_name: chrome
+      default_session: selenium2
+      base_url: https://my-drupal9-site.ddev.site/en
+    Drupal\DrupalExtension:
+      api_driver: 'drupal'
+      drush:
+       alias: '@self'
+      drupal:
+        drupal_root: '/Users/viswatejivundavalli/my-drupal9-site/web'
+      blackbox: ~
+      region_map:
+        footer: ".footer"
+        header: ".layout-header"
